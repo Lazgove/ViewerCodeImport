@@ -1,35 +1,29 @@
 import { Direction } from '../geometry/geometry.js';
 import { ImporterThreeBase } from './importerthree.js';
 
+// Access THREE and SVGLoader from the global scope
 const THREE = window.THREE;
-import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
+const SVGLoader = window.SVGLoader;
 
-export class ImporterThreeSvg extends ImporterThreeBase
-{
-    constructor ()
-    {
-        super ();
+export class ImporterThreeSvg extends ImporterThreeBase {
+    constructor() {
+        super();
     }
 
-    CanImportExtension (extension)
-    {
+    CanImportExtension(extension) {
         return extension === 'svg';
     }
 
-    GetUpDirection ()
-    {
+    GetUpDirection() {
         return Direction.Z;
     }
 
-    CreateLoader (manager)
-    {
-        return new SVGLoader (manager);
+    CreateLoader(manager) {
+        return new SVGLoader(manager);
     }
 
-    GetMainObject (loadedObject)
-    {
-        function ShowFill (path)
-        {
+    GetMainObject(loadedObject) {
+        function ShowFill(path) {
             const style = path.userData.style;
             if (style.fill === undefined || style.fill === 'none') {
                 return false;
@@ -37,8 +31,7 @@ export class ImporterThreeSvg extends ImporterThreeBase
             return true;
         }
 
-        function GetOrCreateMaterial (materials, style, opacity)
-        {
+        function GetOrCreateMaterial(materials, style, opacity) {
             let material = null;
             for (let existingMaterial of materials) {
                 if (existingMaterial.style === style && existingMaterial.opacity === opacity) {
@@ -47,15 +40,15 @@ export class ImporterThreeSvg extends ImporterThreeBase
                 }
             }
             if (material === null) {
-                material = new THREE.MeshPhongMaterial ({
-                    color: new THREE.Color ().setStyle (style),
+                material = new THREE.MeshPhongMaterial({
+                    color: new THREE.Color().setStyle(style),
                     opacity: opacity,
                     transparent: opacity < 1.0
                 });
-                materials.push ({
-                    style : style,
-                    opacity : opacity,
-                    material : material
+                materials.push({
+                    style: style,
+                    opacity: opacity,
+                    material: material
                 });
             }
             return material;
@@ -63,22 +56,22 @@ export class ImporterThreeSvg extends ImporterThreeBase
 
         let materials = [];
 
-        let object = new THREE.Object3D ();
+        let object = new THREE.Object3D();
         object.rotation.x = Math.PI;
 
         for (let path of loadedObject.paths) {
-            const shapes = SVGLoader.createShapes (path);
-            if (ShowFill (path)) {
+            const shapes = SVGLoader.createShapes(path);
+            if (ShowFill(path)) {
                 let pathStyle = path.userData.style;
-                let pathMaterial = GetOrCreateMaterial (materials, pathStyle.fill, pathStyle.opacity);
+                let pathMaterial = GetOrCreateMaterial(materials, pathStyle.fill, pathStyle.opacity);
                 for (const shape of shapes) {
-                    const geometry = new THREE.ExtrudeGeometry (shape, {
+                    const geometry = new THREE.ExtrudeGeometry(shape, {
                         depth: 10,
                         bevelEnabled: false
                     });
-                    const mesh = new THREE.Mesh (geometry, pathMaterial);
+                    const mesh = new THREE.Mesh(geometry, pathMaterial);
                     mesh.name = path.userData.node.id;
-                    object.add (mesh);
+                    object.add(mesh);
                 }
             }
         }

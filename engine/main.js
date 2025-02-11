@@ -76,6 +76,15 @@ import { EnvironmentSettings, ShadingModel } from './viewer/shadingmodel.js';
 import { CameraValidator, UpVector, Viewer, GetDefaultCamera, TraverseThreeObject, GetShadingTypeOfObject } from './viewer/viewer.js';
 import { ViewerModel, EdgeSettings, ViewerMainModel, SetThreeMeshPolygonOffset, IntersectionMode } from './viewer/viewermodel.js';
 
+// Access THREE and loaders from the global scope
+const THREE = window.THREE;
+const TGALoader = window.TGALoader;
+const FBXLoader = window.FBXLoader;
+const ColladaLoader = window.ColladaLoader;
+const VRMLLoader = window.VRMLLoader;
+const ThreeMFLoader = window.ThreeMFLoader;
+const AMFLoader = window.AMFLoader;
+
 export {
     IsDefined,
     ValueOrDefault,
