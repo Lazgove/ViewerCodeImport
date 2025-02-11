@@ -5,7 +5,7 @@ import { MaterialSource } from '../model/material.js';
 import { ConvertModelToThreeObject, ModelToThreeConversionOutput, ModelToThreeConversionParams } from './threeconverter.js';
 import { ConvertColorToThreeColor, HasHighpDriverIssue } from './threeutils.js';
 
-import * as THREE from 'three';
+const THREE = window.THREE;
 
 export class ThreeModelLoader
 {
