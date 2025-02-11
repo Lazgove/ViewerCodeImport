@@ -9,7 +9,7 @@ import { RGBAColor } from '../model/color.js';
 import { Property, PropertyGroup, PropertyType } from '../model/property.js';
 import { Loc } from '../core/localization.js';
 
-import * as fflate from 'fflate';
+const fflate = window.fflate;
 
 const DocumentInitResult =
 {

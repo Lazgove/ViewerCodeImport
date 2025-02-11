@@ -9,7 +9,7 @@ import { Node } from '../model/node.js';
 import { ConvertThreeColorToColor, ConvertThreeGeometryToMesh, ThreeLinearToSRGBColorConverter, ThreeSRGBToLinearColorConverter } from '../threejs/threeutils.js';
 import { ImporterBase } from './importerbase.js';
 
-import * as THREE from 'three';
+const THREE = window.THREE;
 import { TGALoader } from 'three/examples/jsm/loaders/TGALoader.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';

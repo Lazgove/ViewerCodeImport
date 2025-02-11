@@ -1,7 +1,7 @@
 import { Direction } from '../geometry/geometry.js';
 import { ImporterThreeBase } from './importerthree.js';
 
-import * as THREE from 'three';
+const THREE = window.THREE;
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
 
 export class ImporterThreeSvg extends ImporterThreeBase

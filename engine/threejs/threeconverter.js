@@ -5,8 +5,7 @@ import { MaterialSource, MaterialType } from '../model/material.js';
 import { MeshInstance, MeshInstanceId } from '../model/meshinstance.js';
 import { IsEmptyMesh } from '../model/meshutils.js';
 import { ConvertColorToThreeColor, GetShadingType, ShadingType } from './threeutils.js';
-
-const THREE = window.THREE;
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.132.0/build/three.min.js';
 
 export const MaterialGeometryType =
 {
