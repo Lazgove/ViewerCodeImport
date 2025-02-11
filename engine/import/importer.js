@@ -30,6 +30,7 @@ const { unzipSync } = window.fflate;
 
 // Access THREE and loaders from the global scope
 const THREE = window.THREE;
+const TGALoader = window.TGALoader;
 const FBXLoader = window.FBXLoader;
 
 export class ImportSettings {
@@ -552,29 +553,5 @@ export class ImporterThreeBase extends ImporterBase {
             threeColor = this.colorConverter.Convert(threeColor);
         }
         return ConvertThreeColorToColor(threeColor);
-    }
-}
-
-export class ImporterThreeFbx extends ImporterThreeBase {
-    constructor() {
-        super();
-        this.colorConverter = new ThreeLinearToSRGBColorConverter();
-    }
-
-    CanImportExtension(extension) {
-        return extension === 'fbx';
-    }
-
-    GetUpDirection() {
-        return Direction.Y;
-    }
-
-    CreateLoader(manager) {
-        manager.addHandler(/\.tga$/i, new TGALoader(manager));
-        return new FBXLoader(manager);
-    }
-
-    GetMainObject(loadedObject) {
-        return loadedObject;
     }
 }
