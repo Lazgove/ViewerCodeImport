@@ -14,8 +14,7 @@ import { ImporterStl } from './importerstl.js';
 import { ImporterBim } from './importerbim.js';
 import { ImporterThreeAmf, ImporterThree3mf, ImporterThreeDae, ImporterThreeFbx, ImporterThreeWrl } from './importerthree.js';
 import { ImporterFcstd } from './importerfcstd.js';
-
-import * as fflate from 'fflate';
+import { unzipSync } from 'https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js';
 
 export class ImportSettings
 {
@@ -263,7 +262,7 @@ export class Importer
         for (let i = 0; i < archives.length; i++) {
             const archiveFile = archives[i];
             const archiveBuffer = new Uint8Array (archiveFile.content);
-            const decompressed = fflate.unzipSync (archiveBuffer);
+            const decompressed = unzipSync (archiveBuffer);
             for (const fileName in decompressed) {
                 if (Object.prototype.hasOwnProperty.call (decompressed, fileName)) {
                     let file = new ImporterFile (fileName, FileSource.Decompressed, null);
