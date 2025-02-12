@@ -118,11 +118,11 @@ export class Importer {
         callbacks.onLoadStart();
         this.LoadFiles(inputFiles, {
             onReady: () => {
-                console.log('Files loaded, starting import');
+                console.log('Files loaded, starting import ', inputFiles);
                 callbacks.onImportStart();
                 RunTaskAsync(() => {
                     this.DecompressArchives(this.fileList, () => {
-                        console.log('Archives decompressed, importing loaded files');
+                        console.log('Archives decompressed, importing loaded files ', this.fileList);
                         this.ImportLoadedFiles(settings, callbacks);
                     });
                 });
