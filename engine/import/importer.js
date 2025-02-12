@@ -133,7 +133,7 @@ export class Importer {
     }
 
     LoadFiles(inputFiles, callbacks) {
-        console.log('LoadFiles called');
+        console.log('LoadFiles called fdfdf', inputFiles);
         let newFileList = new ImporterFileList();
         newFileList.FillFromInputFiles(inputFiles);
         console.log("New filelist", newFileList);
