@@ -86,21 +86,7 @@ export class Importer {
     constructor() {
         this.importers = [
             new ImporterObj(),
-            new ImporterStl(),
-            new ImporterOff(),
-            new ImporterPly(),
-            new Importer3ds(),
-            new ImporterGltf(),
-            new ImporterBim(),
-            new Importer3dm(),
-            new ImporterIfc(),
-            new ImporterOcct(),
-            new ImporterFcstd(),
-            new ImporterThreeFbx(),
-            new ImporterThreeDae(),
-            new ImporterThreeWrl(),
-            new ImporterThree3mf(),
-            new ImporterThreeAmf()
+
         ];
         this.fileList = new ImporterFileList();
         this.model = null;

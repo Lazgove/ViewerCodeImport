@@ -90,6 +90,7 @@ export class ImporterObj extends ImporterBase
     constructor ()
     {
         super ();
+        console.log("IUHUIHUIHUHUIHUI");
     }
 
     CanImportExtension (extension)
