@@ -176,6 +176,7 @@ export class Importer {
 
         if (importableFiles.length === 1 || !callbacks.onSelectMainFile) {
             let mainFile = importableFiles[0];
+            console.log('Single importable dsfsdfsdf:', mainFile);
             console.log('Single importable file found, importing:', mainFile.file.name);
             this.ImportLoadedMainFile(mainFile, settings, callbacks);
         } else {
