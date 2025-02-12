@@ -86,6 +86,21 @@ export class Importer {
     constructor() {
         this.importers = [
             new ImporterObj(),
+            new ImporterStl(),
+            new ImporterOff(),
+            new ImporterPly(),
+            new Importer3ds(),
+            new ImporterGltf(),
+            new ImporterBim(),
+            new Importer3dm(),
+            new ImporterIfc(),
+            new ImporterOcct(),
+            new ImporterFcstd(),
+            new ImporterThreeFbx(),
+            new ImporterThreeDae(),
+            new ImporterThreeWrl(),
+            new ImporterThree3mf(),
+            new ImporterThreeAmf()
         ];
         console.log(this.importers[0]);
         this.fileList = new ImporterFileList();
@@ -99,12 +114,15 @@ export class Importer {
     }
 
     ImportFiles(inputFiles, settings, callbacks) {
+        console.log('ImportFiles called');
         callbacks.onLoadStart();
         this.LoadFiles(inputFiles, {
             onReady: () => {
+                console.log('Files loaded, starting import');
                 callbacks.onImportStart();
                 RunTaskAsync(() => {
                     this.DecompressArchives(this.fileList, () => {
+                        console.log('Archives decompressed, importing loaded files');
                         this.ImportLoadedFiles(settings, callbacks);
                     });
                 });
@@ -115,6 +133,7 @@ export class Importer {
     }
 
     LoadFiles(inputFiles, callbacks) {
+        console.log('LoadFiles called');
         let newFileList = new ImporterFileList();
         newFileList.FillFromInputFiles(inputFiles);
 
@@ -147,24 +166,30 @@ export class Importer {
     }
 
     ImportLoadedFiles(settings, callbacks) {
+        console.log('ImportLoadedFiles called');
         let importableFiles = this.GetImportableFiles(this.fileList);
         if (importableFiles.length === 0) {
+            console.error('No importable files found');
             callbacks.onImportError(new ImportError(ImportErrorCode.NoImportableFile));
             return;
         }
 
         if (importableFiles.length === 1 || !callbacks.onSelectMainFile) {
             let mainFile = importableFiles[0];
+            console.log('Single importable file found, importing:', mainFile.file.name);
             this.ImportLoadedMainFile(mainFile, settings, callbacks);
         } else {
             let fileNames = importableFiles.map(importableFile => importableFile.file.name);
+            console.log('Multiple importable files found, prompting user to select main file');
             callbacks.onSelectMainFile(fileNames, (mainFileIndex) => {
                 if (mainFileIndex === null) {
+                    console.error('No main file selected');
                     callbacks.onImportError(new ImportError(ImportErrorCode.NoImportableFile));
                     return;
                 }
                 RunTaskAsync(() => {
                     let mainFile = importableFiles[mainFileIndex];
+                    console.log('User selected main file:', mainFile.file.name);
                     this.ImportLoadedMainFile(mainFile, settings, callbacks);
                 });
             });
@@ -172,11 +197,13 @@ export class Importer {
     }
 
     ImportLoadedMainFile(mainFile, settings, callbacks) {
+        console.log('ImportLoadedMainFile called for file:', mainFile.file.name);
         if (mainFile === null || mainFile.file === null || mainFile.file.content === null) {
             let error = new ImportError(ImportErrorCode.FailedToLoadFile);
             if (mainFile !== null && mainFile.file !== null) {
                 error.mainFile = mainFile.file.name;
             }
+            console.error('Failed to load main file:', error.mainFile);
             callbacks.onImportError(error);
             return;
         }
@@ -211,6 +238,7 @@ export class Importer {
                 return fileAccessor.GetFileBuffer(filePath);
             },
             onSuccess: () => {
+                console.log('Import successful for file:', mainFile.file.name);
                 this.model = importer.GetModel();
                 let result = new ImportResult();
                 result.mainFile = mainFile.file.name;
@@ -224,15 +252,18 @@ export class Importer {
                 let error = new ImportError(ImportErrorCode.ImportFailed);
                 error.mainFile = mainFile.file.name;
                 error.message = importer.GetErrorMessage();
+                console.error('Import failed for file:', error.mainFile, 'Error message:', error.message);
                 callbacks.onImportError(error);
             },
             onComplete: () => {
+                console.log('Import complete for file:', mainFile.file.name);
                 importer.Clear();
             }
         });
     }
 
     DecompressArchives(fileList, onReady) {
+        console.log('DecompressArchives called');
         let files = fileList.GetFiles();
         let archives = [];
         for (let file of files) {
@@ -241,6 +272,7 @@ export class Importer {
             }
         }
         if (archives.length === 0) {
+            console.log('No archives to decompress');
             onReady();
             return;
         }
@@ -256,19 +288,23 @@ export class Importer {
                 }
             }
         }
+        console.log('Archives decompressed');
         onReady();
     }
 
     GetFileList() {
+        console.log('GetFileList called');
         return this.fileList;
     }
 
     HasImportableFile(fileList) {
+        console.log('HasImportableFile called');
         let importableFiles = this.GetImportableFiles(fileList);
         return importableFiles.length > 0;
     }
 
     GetImportableFiles(fileList) {
+        console.log('GetImportableFiles called');
         function FindImporter(file, importers) {
             for (let importerIndex = 0; importerIndex < importers.length; importerIndex++) {
                 let importer = importers[importerIndex];
