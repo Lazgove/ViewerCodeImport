@@ -198,6 +198,7 @@ export class Importer {
 
     ImportLoadedMainFile(mainFile, settings, callbacks) {
         console.log('ImportLoadedMainFile called for file:', mainFile.file.name);
+        console.log(mainFile);
         if (mainFile === null || mainFile.file === null || mainFile.file.content === null) {
             let error = new ImportError(ImportErrorCode.FailedToLoadFile);
             if (mainFile !== null && mainFile.file !== null) {
