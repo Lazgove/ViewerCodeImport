@@ -133,7 +133,7 @@ export class Importer {
     }
 
     LoadFiles(inputFiles, callbacks) {
-        console.log('LoadFiles called fdfdf', inputFiles);
+        console.log('LoadFiles called', inputFiles);
         let newFileList = new ImporterFileList();
         newFileList.FillFromInputFiles(inputFiles);
         console.log("New filelist", newFileList);
@@ -158,10 +158,20 @@ export class Importer {
         if (reset) {
             this.fileList = newFileList;
         }
+        console.log('Final file list:', this.fileList);
         this.fileList.GetContent({
-            onReady: callbacks.onReady,
-            onFileListProgress: callbacks.onFileListProgress,
-            onFileLoadProgress: callbacks.onFileLoadProgress
+            onReady: () => {
+                console.log('File content ready');
+                callbacks.onReady();
+            },
+            onFileListProgress: (progress) => {
+                console.log('File list progress:', progress);
+                callbacks.onFileListProgress(progress);
+            },
+            onFileLoadProgress: (progress) => {
+                console.log('File load progress:', progress);
+                callbacks.onFileLoadProgress(progress);
+            }
         });
     }
 
@@ -176,7 +186,6 @@ export class Importer {
 
         if (importableFiles.length === 1 || !callbacks.onSelectMainFile) {
             let mainFile = importableFiles[0];
-            console.log('Single importable dsfsdfsdf:', mainFile);
             console.log('Single importable file found, importing:', mainFile.file.name);
             this.ImportLoadedMainFile(mainFile, settings, callbacks);
         } else {
