@@ -136,7 +136,7 @@ export class Importer {
         console.log('LoadFiles called');
         let newFileList = new ImporterFileList();
         newFileList.FillFromInputFiles(inputFiles);
-
+        console.log("New filelist", newFileList);
         let reset = false;
         if (this.HasImportableFile(newFileList)) {
             reset = true;
