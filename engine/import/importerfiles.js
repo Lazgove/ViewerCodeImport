@@ -14,6 +14,7 @@ export class InputFile
      */
     constructor (name, source, data)
     {
+        console.log("data", data);
         this.name = name;
         this.source = source;
         this.data = data;
@@ -70,6 +71,7 @@ export class ImporterFileList
         for (let inputFile of inputFiles) {
             let file = new ImporterFile (inputFile.name, inputFile.source, inputFile.data);
             console.log("FIILE", file);
+            console.log("FIILEdata", file.data);
             this.files.push (file);
         }
     }
