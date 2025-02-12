@@ -69,6 +69,7 @@ export class ImporterFileList
     {
         this.files = [];
         for (let inputFile of inputFiles) {
+            console.log("inputFile", inputFile);
             let file = new ImporterFile (inputFile.name, inputFile.source, inputFile.data);
             console.log("FIILE", file);
             console.log("FIILEdata", file.data);
