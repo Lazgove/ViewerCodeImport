@@ -86,8 +86,8 @@ export class Importer {
     constructor() {
         this.importers = [
             new ImporterObj(),
-
         ];
+        console.log(this.importers[0]);
         this.fileList = new ImporterFileList();
         this.model = null;
         this.usedFiles = [];

@@ -8,6 +8,7 @@ export class ImporterBase
 {
     constructor ()
     {
+        console.log('baseeee');
         this.name = null;
         this.extension = null;
         this.callbacks = null;
