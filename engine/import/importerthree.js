@@ -12,7 +12,7 @@ import { ImporterBase } from './importerbase.js';
 // Access THREE and loaders from the global scope
 const THREE = window.THREE;
 const FBXLoader = window.FBXLoader;
-const TGALoader = window.TGALoader;
+const TGALoader = THREE.TGALoader;
 const ColladaLoader = window.ColladaLoader;
 const VRMLLoader = window.VRMLLoader;
 const ThreeMFLoader = window.ThreeMFLoader;
