@@ -10,9 +10,9 @@ import { ConvertThreeColorToColor, ConvertThreeGeometryToMesh, ThreeLinearToSRGB
 import { ImporterBase } from './importerbase.js';
 import { TGALoader } from '../loaders/TGALoader.js';
 import { FBXLoader } from '../loaders/FBXLoader.js';
-import { ColladaLoader } from '../loaders/ColladaLoader.js';
-import { VRMLLoader } from '../loaders/VRMLLoader.js';
-import { AMFLoader } from '../loaders/AMFLoader.js';
+// import { ColladaLoader } from '../loaders/ColladaLoader.js';
+// import { VRMLLoader } from '../loaders/VRMLLoader.js';
+// import { AMFLoader } from '../loaders/AMFLoader.js';
 
 // Access THREE and loaders from the global scope
 const THREE = window.THREE;
