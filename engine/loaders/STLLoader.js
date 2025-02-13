@@ -7,7 +7,7 @@ import {
 	Loader,
 	Vector3,
 	SRGBColorSpace
-} from 'three';
+} from 'https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js';
 
 /**
  * Description: A THREE loader for STL ASCII files, as created by Solidworks and other CAD programs.
