@@ -159,7 +159,7 @@ export class Viewer
 {
     constructor ()
     {
-        THREE.ColorManagement.enabled = false;
+        //THREE.ColorManagement.enabled = false;
 
         this.canvas = null;
         this.renderer = null;
