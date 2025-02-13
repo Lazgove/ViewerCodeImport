@@ -1,6 +1,6 @@
 import { RGBColor } from '../model/color.js';
 import { ConvertColorToThreeColor, DisposeThreeObjects, GetLineSegmentsProjectedDistance } from '../threejs/threeutils.js';
-
+console.log("hbhjb");
 const THREE = window.THREE;
 
 const LineThresholdInPixels = 10.0;
