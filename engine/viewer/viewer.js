@@ -160,7 +160,7 @@ export class Viewer
     constructor ()
     {
         //THREE.ColorManagement.enabled = false;
-
+        console.log("iuhuuihuihi");
         this.canvas = null;
         this.renderer = null;
         this.scene = null;
