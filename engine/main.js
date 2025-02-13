@@ -77,6 +77,7 @@ import { CameraValidator, UpVector, Viewer, GetDefaultCamera, TraverseThreeObjec
 import { ViewerModel, EdgeSettings, ViewerMainModel, SetThreeMeshPolygonOffset, IntersectionMode } from './viewer/viewermodel.js';
 
 // Access THREE and loaders from the global scope
+window.EmbeddedViewer = EmbeddedViewer;
 const THREE = window.THREE;
 const TGALoader = window.TGALoader;
 const FBXLoader = window.FBXLoader;

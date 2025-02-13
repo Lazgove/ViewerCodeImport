@@ -8,7 +8,7 @@ import { Navigation } from './navigation.js';
 import { ShadingModel } from './shadingmodel.js';
 import { ViewerModel, ViewerMainModel } from './viewermodel.js';
 
-import * as THREE from 'three';
+const THREE = window.THREE;
 
 export function GetDefaultCamera (direction)
 {

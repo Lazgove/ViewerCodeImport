@@ -2,7 +2,7 @@ import { SubCoord3D } from '../geometry/coord3d.js';
 import { ProjectionMode } from '../viewer/camera.js';
 import { ShadingType } from '../threejs/threeutils.js';
 
-import * as THREE from 'three';
+const THREE = window.THREE;
 
 /**
  * Environment settings object.
