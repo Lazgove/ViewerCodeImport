@@ -12,7 +12,7 @@ import { ImporterBase } from './importerbase.js';
 // Access THREE and loaders from the global scope
 const THREE = window.THREE;
 const FBXLoader = window.FBXLoader;
-const TGALoader = THREE.TGALoader;
+
 const ColladaLoader = window.ColladaLoader;
 const VRMLLoader = window.VRMLLoader;
 const ThreeMFLoader = window.ThreeMFLoader;
@@ -280,7 +280,7 @@ export class ImporterThreeFbx extends ImporterThreeBase {
     }
 
     CreateLoader(manager) {
-        manager.addHandler(/\.tga$/i, new TGALoader(manager));
+        manager.addHandler(/\.tga$/i, new THREE.TGALoader(manager));
         return new FBXLoader(manager);
     }
 
@@ -303,7 +303,7 @@ export class ImporterThreeDae extends ImporterThreeBase {
     }
 
     CreateLoader(manager) {
-        manager.addHandler(/\.tga$/i, new TGALoader(manager));
+        manager.addHandler(/\.tga$/i, new THREE.TGALoader(manager));
         return new ColladaLoader(manager);
     }
 
