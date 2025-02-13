@@ -79,7 +79,6 @@ import { ViewerModel, EdgeSettings, ViewerMainModel, SetThreeMeshPolygonOffset, 
 // Access THREE and loaders from the global scope
 window.EmbeddedViewer = EmbeddedViewer;
 const THREE = window.THREE;
-const TGALoader = window.TGALoader;
 const FBXLoader = window.FBXLoader;
 const ColladaLoader = window.ColladaLoader;
 const VRMLLoader = window.VRMLLoader;
