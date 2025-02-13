@@ -8,11 +8,11 @@ import { PhongMaterial, TextureMap } from '../model/material.js';
 import { Node } from '../model/node.js';
 import { ConvertThreeColorToColor, ConvertThreeGeometryToMesh, ThreeLinearToSRGBColorConverter, ThreeSRGBToLinearColorConverter } from '../threejs/threeutils.js';
 import { ImporterBase } from './importerbase.js';
-import { TGALoader } from '.loaders/TGALoader.js';
-import { FBXLoader } from '.loaders/FBXLoader.js';
-import { ColladaLoader } from '.loaders/ColladaLoader.js';
-import { VRMLLoader } from '.loaders/VRMLLoader.js';
-import { AMFLoader } from '.loaders/AMFLoader.js';
+import { TGALoader } from '../loaders/TGALoader.js';
+import { FBXLoader } from '../loaders/FBXLoader.js';
+import { ColladaLoader } from '../loaders/ColladaLoader.js';
+import { VRMLLoader } from '../loaders/VRMLLoader.js';
+import { AMFLoader } from '../loaders/AMFLoader.js';
 
 // Access THREE and loaders from the global scope
 const THREE = window.THREE;
