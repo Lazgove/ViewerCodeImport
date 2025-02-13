@@ -280,7 +280,7 @@ export class ImporterThreeFbx extends ImporterThreeBase {
     }
 
     CreateLoader(manager) {
-        manager.addHandler(/\.tga$/i, new THREE.TGALoader(manager));
+        manager.addHandler(/\.tga$/i, new TGALoader(manager));
         return new FBXLoader(manager);
     }
 
@@ -303,7 +303,7 @@ export class ImporterThreeDae extends ImporterThreeBase {
     }
 
     CreateLoader(manager) {
-        manager.addHandler(/\.tga$/i, new THREE.TGALoader(manager));
+        manager.addHandler(/\.tga$/i, new TGALoader(manager));
         return new ColladaLoader(manager);
     }
 
